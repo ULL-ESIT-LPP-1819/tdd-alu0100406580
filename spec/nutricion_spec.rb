@@ -44,8 +44,8 @@ RSpec.describe Nutricion do
       expect(@cañaManzana.porciones(75)).to eq("cada porcion de #{75} tiene: Valor energetico:#{1277.325}KJ/#{305.4}, grasas: #{16.5}, grasas saturadas: #{9.0}, hidratos de carbono: #{35.25}, azucares: #{13.5}, proteinas: #{3.975}, sal: #{0.525}") #Hay que poner esta
     end
 
-    it "Índice" do
-      expect(@cañaManzana.indice).to eq(25)
+    it "Ingesta de Referencia" do
+      expect(@cañaManzana.ingesta).to eq("Ingesta de referencia: Valor energético: #{20.275}%KJ/#{20.36}%Kcal, Grasa total: #{31.43}%, Ácidos grasos saturados: #{12.0}, Hidratos de carbono: #{18.08}%, Azúcares: #{20.0}%, Proteínas: #{10.6}, Sal: #{11.67}")
     end
     
   end

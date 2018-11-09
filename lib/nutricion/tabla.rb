@@ -54,6 +54,18 @@ class Tabla
         return "cada porcion de #{porcion} tiene: Valor energetico:#{valKJpor}KJ/#{valKCpor}, grasas: #{grasaspor}, grasas saturadas: #{grasasSatpor}, hidratos de carbono: #{hidratospor}, azucares: #{azucarespor}, proteinas: #{proteinaspor}, sal: #{salpor}"
     end
  
+    def ingesta
+        valKJing = ((@valEnerKJ * 100) / 8400)
+        valKCing = ((@valEnerKcal * 100) / 2000)
+        grasasing = ((@grasas * 100) / 70)
+        grasasSating = ((@grasasSat * 20) / 20)
+        hidratosing = ((@hidratos * 100) / 260)
+        azucaresing = ((@azucares * 100) / 90)
+        proteinasing = ((@proteinas * 100) / 50)
+        saling = ((@sal * 100) / 6)
+
+        return "Ingesta de referencia: Valor energético: #{valKJing}%KJ/#{valKCing}%Kcal, Grasa total: #{grasasing.round(2)}%, Ácidos grasos saturados: #{grasasSating}, Hidratos de carbono: #{hidratosing.round(2)}%, Azúcares: #{azucaresing}%, Proteínas: #{proteinasing}, Sal: #{saling.round(2)}"
+    end
 
 
 end
