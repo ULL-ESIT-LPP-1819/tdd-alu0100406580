@@ -36,8 +36,12 @@ RSpec.describe Nutricion do
       expect(@cañaManzana.fibra).to eq(10)
     end
 
+    it "Método to_s" do
+      expect(@cañaManzana.to_s).to eq("El valor energético: #{1703.1}KJ/#{407.2}Kcal\n Cantidad de grasas: #{22}\n Cantidad de grasas saturadas: #{12}\n Hidratos de carbono: #{47}\n Azúcares: #{18}\n Proteínas: #{5.3}\n Sal: #{0.7}")
+    end
+
     it "Porciones" do
-      expec(@cañaManzana.porciones(75).to eq(25))
+      expec(@cañaManzana.porciones(75).to eq(25)) #Hay que poner esta
     end
     
   end

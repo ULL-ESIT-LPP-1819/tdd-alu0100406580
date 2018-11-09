@@ -1,6 +1,15 @@
 class Tabla
     attr_reader :grasas, :grasasSat, :hidratos, :azucares, :proteinas, :sal, :valEnerKJ, :valEnerKcal
     attr_accessor :grasasMonoinsaturadas, :grasasPoli, :poliAlcoholes, :almidon, :fibra, :vitaminas, :minerales
+
+    def initialize(grasas, grasasSat, hidratos, azucares, proteinas, sal)
+        @grasas, @grasasSat, @hidratos, @azucares, @proteinas, @sal = grasas, grasasSat, hidratos, azucares, proteinas, sal
+        @valEnerKJ = ((@grasas*37)+(@hidratos*17)+(@proteinas*17))
+        @valEnerKcal = ((@grasas*9)+(@hidratos*4)+(@proteinas*4))
+        @valEnerKJTotal = ((@grasas*37)+(@hidratos*17)+(@proteinas*17)+(@sal*25)+(grasasMonoinsaturadas*37)+(grasasPoli*37)+(poliAlcoholes*10)+(almidon*17)+(fibra*8))
+        @valEnerKcalTotal = ((@grasas*9)+(@hidratos*4)+(@proteinas*4)+(@sal*6)+(grasasMonoinsaturadas*9)+(grasasPoli*9)+(poliAlcoholes*2.4)+(almidon*4)+(fibra*2))
+    end
+
     def grasasMonoinsaturadas
         @grasasMonoinsaturadas ||= 0
     end
@@ -29,15 +38,11 @@ class Tabla
         @minerales ||= 0
     end
 
-    def initialize(grasas, grasasSat, hidratos, azucares, proteinas, sal)
-        @grasas, @grasasSat, @hidratos, @azucares, @proteinas, @sal = grasas, grasasSat, hidratos, azucares, proteinas, sal
-        @valEnerKJ = ((@grasas*37)+(@hidratos*17)+(@proteinas*17))
-        @valEnerKcal = ((@grasas*9)+(@hidratos*4)+(@proteinas*4))
-        @valEnerKJTotal = ((@grasas*37)+(@hidratos*17)+(@proteinas*17)+(@sal*25)+(grasasMonoinsaturadas*37)+(grasasPoli*37)+(poliAlcoholes*10)+(almidon*17)+(fibra*8))
-        @valEnerKcalTotal = ((@grasas*9)+(@hidratos*4)+(@proteinas*4)+(@sal*6)+(grasasMonoinsaturadas*9)+(grasasPoli*9)+(poliAlcoholes*2.4)+(almidon*4)+(fibra*2))
+    def to_s
+        #puts "Información Nutricional por 100g/100ml: (los resultados a 0 es que no han sido previamente escritos):"
+        "El valor energético: #{@valEnerKJ}KJ/#{@valEnerKcal}Kcal\n Cantidad de grasas: #{@grasas}\n Cantidad de grasas saturadas: #{@grasasSat}\n Hidratos de carbono: #{@hidratos}\n Azúcares: #{@azucares}\n Proteínas: #{@proteinas}\n Sal: #{@sal}"
     end
    
-
     def porcion(porcion)
 
     end
