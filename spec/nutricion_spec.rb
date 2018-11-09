@@ -9,7 +9,7 @@ RSpec.describe Nutricion do
 
   describe Tabla do
     before :each do
-      @cañaManzana = Tabla.new(22,12,47,18,5.3,0.7)
+      @cañaManzana = Tabla.new(22.0,12.0,47.0,18.0,5.3,0.7)
   end 
 
 	  it "Creación de una etiqueta nutricional" do
@@ -37,11 +37,15 @@ RSpec.describe Nutricion do
     end
 
     it "Método to_s" do
-      expect(@cañaManzana.to_s).to eq("El valor energético: #{1703.1}KJ/#{407.2}Kcal\n Cantidad de grasas: #{22}\n Cantidad de grasas saturadas: #{12}\n Hidratos de carbono: #{47}\n Azúcares: #{18}\n Proteínas: #{5.3}\n Sal: #{0.7}")
+      expect(@cañaManzana.to_s).to eq("El valor energético: #{1703.1}KJ/#{407.2}Kcal\n Cantidad de grasas: #{22.0}\n Cantidad de grasas saturadas: #{12.0}\n Hidratos de carbono: #{47.0}\n Azúcares: #{18.0}\n Proteínas: #{5.3}\n Sal: #{0.7}")
     end
 
     it "Porciones" do
-      expec(@cañaManzana.porciones(75).to eq(25)) #Hay que poner esta
+      expect(@cañaManzana.porciones(75)).to eq("cada porcion de #{75} tiene: Valor energetico:#{1277.325}KJ/#{305.4}, grasas: #{16.5}, grasas saturadas: #{9.0}, hidratos de carbono: #{35.25}, azucares: #{13.5}, proteinas: #{3.975}, sal: #{0.525}") #Hay que poner esta
+    end
+
+    it "Índice" do
+      expect(@cañaManzana.indice).to eq(25)
     end
     
   end

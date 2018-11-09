@@ -39,13 +39,21 @@ class Tabla
     end
 
     def to_s
-        #puts "Información Nutricional por 100g/100ml: (los resultados a 0 es que no han sido previamente escritos):"
         "El valor energético: #{@valEnerKJ}KJ/#{@valEnerKcal}Kcal\n Cantidad de grasas: #{@grasas}\n Cantidad de grasas saturadas: #{@grasasSat}\n Hidratos de carbono: #{@hidratos}\n Azúcares: #{@azucares}\n Proteínas: #{@proteinas}\n Sal: #{@sal}"
     end
    
-    def porcion(porcion)
-
+    def porciones(porcion)
+        valKJpor = ((@valEnerKJ * porcion) / 100)
+        valKCpor = ((@valEnerKcal * porcion) / 100)
+        grasaspor = ((@grasas * porcion) / 100)
+        grasasSatpor = ((@grasasSat * porcion) / 100)
+        hidratospor = ((@hidratos * porcion) / 100)
+        azucarespor = ((@azucares * porcion) / 100)
+        proteinaspor = ((@proteinas * porcion) / 100)
+        salpor = ((@sal * porcion) / 100)
+        return "cada porcion de #{porcion} tiene: Valor energetico:#{valKJpor}KJ/#{valKCpor}, grasas: #{grasaspor}, grasas saturadas: #{grasasSatpor}, hidratos de carbono: #{hidratospor}, azucares: #{azucarespor}, proteinas: #{proteinaspor}, sal: #{salpor}"
     end
+ 
 
 
 end
