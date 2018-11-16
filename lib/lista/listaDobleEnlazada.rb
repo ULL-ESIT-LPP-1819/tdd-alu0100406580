@@ -22,8 +22,24 @@ class ListaDobleEnlazada
         else
             nodo["next"] = @cabeza
             @cabeza.prev = nodo
-            nodo["prev"] = nil
+            #nodo["prev"] = nil
             @cabeza = nodo
+        end
+        @tamaño = @tamaño + 1
+    end
+
+    def insertaAtras(valor)
+        nodo = Node.new(valor,nil,nil)
+        
+        if (self.tamaño == 0)
+            @cabeza = nodo
+            @cola = nodo
+
+        else
+            nodo["prev"] = @cola
+            @cola.next = nodo
+            #nodo["next"] = nil
+            @cola = nodo
         end
         @tamaño = @tamaño + 1
     end
