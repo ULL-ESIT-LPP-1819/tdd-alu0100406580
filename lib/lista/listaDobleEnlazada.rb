@@ -5,6 +5,7 @@ Node = Struct.new(:value, :next, :prev)
 class ListaDobleEnlazada
 
     include Enumerable
+    include Comparable
     
     attr_accessor :cabeza, :cola, :tamaño
 
@@ -24,7 +25,6 @@ class ListaDobleEnlazada
         else
             nodo["next"] = @cabeza
             @cabeza.prev = nodo
-            #nodo["prev"] = nil
             @cabeza = nodo
         end
         @tamaño = @tamaño + 1
@@ -40,7 +40,6 @@ class ListaDobleEnlazada
         else
             nodo["prev"] = @cola
             @cola.next = nodo
-            #nodo["next"] = nil
             @cola = nodo
         end
         @tamaño = @tamaño + 1
@@ -52,7 +51,6 @@ class ListaDobleEnlazada
         else
            nodoAux = @cabeza
            @cabeza = @cabeza["next"]
-           #@cabeza["prev"] = nil
            @tamaño = @tamaño - 1
            return nodoAux["value"]
         end
@@ -64,9 +62,36 @@ class ListaDobleEnlazada
         else
            nodoAux = @cola
            @cola = @cola["prev"]
-           #@cola[:Next_] = nil
            @tamaño = @tamaño - 1
            return nodoAux["value"]
+        end
+    end
+
+    def to_s
+        nodoAux = @cabeza
+        arr = []
+        if (self.tamaño == 0)
+            return "Lista Vacía"
+        else
+            while(nodoAux != nil)
+                arr << nodoAux.value
+                #puts nodoAux.value
+                nodoAux = nodoAux.next
+            end
+            return arr
+        end
+    end
+
+    def <=>(other)
+        return nil unless other.instance_of? ListaDobleEnlazada
+        @cabeza.value.sal <=> other.cabeza.value.sal
+    end
+
+    def each
+        nodoAux = @cabeza
+        while(nodoAux != nil)
+            yield nodoAux["value"]
+            nodoAux = nodoAux["next"]
         end
     end
 
