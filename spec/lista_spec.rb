@@ -5,6 +5,8 @@ RSpec.describe Lista do
   
     describe Lista do
       before :each do
+        include Enumerable
+
         @lista1 = ListaDobleEnlazada.new()
         @cañaManzana2 = Tabla.new(22.0,12.0,47.0,18.0,5.3,0.7)
         end 
@@ -38,9 +40,22 @@ RSpec.describe Lista do
         @lista1.insertaAtras(17)
         @lista1.insertaAdelante(13)
         @lista1.insertaAdelante(22)
-        expect(@lista1.extraerDelante).to eq("55")
+        expect(@lista1.extraerDelante).to eq(22)
+        expect(@lista1.cabeza.next.value).to eq(55)
+        expect(@lista1.tamaño).to eq(3)
       end
-    
+
+      it "Extraer por detrás" do
+        expect(@lista1.extraerDetras).to eq("Lista Vacía")
+        @lista1.insertaAtras(55)
+        @lista1.insertaAtras(17)
+        @lista1.insertaAdelante(13)
+        @lista1.insertaAdelante(22)
+        expect(@lista1.extraerDetras).to eq(17)
+        expect(@lista1.cola.value).to eq(55)
+        expect(@lista1.tamaño).to eq(3)
+      end
+          
     
     end
 end
