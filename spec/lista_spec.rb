@@ -55,7 +55,19 @@ RSpec.describe Lista do
         expect(@lista1.cola.value).to eq(55)
         expect(@lista1.tamaño).to eq(3)
       end
-          
+
+      it "Mostrar Lista" do
+        expect(@lista.to_s).to eq("Lista Vacía")
+        @lista1.insertaAtras(55)
+        @lista1.insertaAtras(17)
+        @lista1.insertaAdelante(13)
+        @lista1.insertaAdelante(22)
+        @lista1.insertaAtras(55)
+        @lista1.insertaAtras(17)
+        @lista1.insertaAdelante(13)
+        @lista1.insertaAdelante(22)
+        expect(@lista.to_s).to eq(21,22,22,33,22,54,22)
+      end
     
     end
 end
