@@ -64,6 +64,8 @@ RSpec.describe Lista do
 
       it "Lista vacía" do
         expect(@lista1.is_empty?).to eq(true)
+        @lista1.insertaAtras(@cañaManzana1)
+        expect(@lista1.is_empty?).to eq(false)
       end
 
       it "Mostrar Lista" do
@@ -80,12 +82,16 @@ RSpec.describe Lista do
       end
 
       it "Lista según los gramos de sal" do
+        expect(@lista1.sal("<",6)).to eq("Lista Vacía")
         @lista1.insertaAdelante(@cañaManzana1)
         @lista1.insertaAdelante(@cañaManzana2)
         @lista1.insertaAdelante(@cañaManzana3)
         @lista1.insertaAdelante(@cañaManzana4)
         @lista1.insertaAdelante(@cañaManzana5)
-        expect(@lista1.sal(mayor,6) < @lista2).to eq(true)
+        expect(@lista1.sal("<",0.6)).to eq([@cañaManzana5, @cañaManzana3])
+        expect(@lista1.sal("=",1.7)).to eq([@cañaManzana4])
+        expect(@lista1.sal(">",0.6)).to eq([@cañaManzana4, @cañaManzana2, @cañaManzana1])
+
       end
     
     end

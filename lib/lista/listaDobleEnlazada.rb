@@ -67,6 +67,10 @@ class ListaDobleEnlazada
         end
     end
 
+    def is_empty?
+        return self.tamaño.zero?
+    end
+
     def to_s
         nodoAux = @cabeza
         arr = []
@@ -81,6 +85,43 @@ class ListaDobleEnlazada
         end
     end
 
+    def sal(comparacion,gramos)
+        if (self.tamaño == 0)
+            return "Lista Vacía"
+        else
+            nodoAux = @cabeza
+            arr = []
+            if (comparacion == "<" )
+                while(nodoAux != nil)
+                    if (nodoAux.value.sal < gramos)
+                        arr << nodoAux.value
+                    end
+                        nodoAux = nodoAux["next"]
+                end
+                return arr
+            end
+            if (comparacion == "=" )
+                while(nodoAux != nil)
+                    if (nodoAux.value.sal == gramos)
+                        arr << nodoAux.value
+                    end
+                        nodoAux = nodoAux["next"]
+                end
+                return arr
+            end
+            if (comparacion == ">" )
+                while(nodoAux != nil)
+                    if (nodoAux.value.sal > gramos)
+                        arr << nodoAux.value
+                    end
+                        nodoAux = nodoAux["next"]
+                end
+                return arr
+            end
+        end
+    end
+
+
     def <=>(other)
         return nil unless other.instance_of? ListaDobleEnlazada
         @cabeza.value.sal <=> other.cabeza.value.sal
@@ -93,5 +134,4 @@ class ListaDobleEnlazada
             nodoAux = nodoAux["next"]
         end
     end
-
 end
