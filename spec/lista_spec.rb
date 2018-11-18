@@ -24,42 +24,52 @@ RSpec.describe Lista do
       end
 
       it "Insertar adelante" do
-        @lista1.insertaAdelante(13)
-        @lista1.insertaAdelante(22)
+        @lista1.insertaAdelante(@cañaManzana1)
+        @lista1.insertaAdelante(@cañaManzana2)
+        @lista1.insertaAdelante(@cañaManzana3)
+        @lista1.insertaAdelante(@cañaManzana4)
+        @lista1.insertaAdelante(@cañaManzana5)
         expect(@lista1.cabeza.prev).to eq(nil)
-        expect(@lista1.cabeza.value).to eq(22)
-        expect(@lista1.cabeza.next.value).to eq(13)
-        expect(@lista1.tamaño).to eq(2)
+        expect(@lista1.cabeza.value).to eq(@cañaManzana5)
+        expect(@lista1.cabeza.next.value).to eq(@cañaManzana4)
+        expect(@lista1.tamaño).to eq(5)
       end
 
       it "Insertar Atrás" do
-        @lista1.insertaAtras(55)
-        @lista1.insertaAtras(17)
-        expect(@lista1.cola.value).to eq(17)
-        expect(@lista1.cola.prev.value).to eq(55)
-        expect(@lista1.tamaño).to eq(2)
+        @lista1.insertaAtras(@cañaManzana1)
+        @lista1.insertaAtras(@cañaManzana2)
+        @lista1.insertaAtras(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana4)
+        @lista1.insertaAtras(@cañaManzana5)
+        expect(@lista1.cola.value).to eq(@cañaManzana5)
+        expect(@lista1.cola.prev.value).to eq(@cañaManzana4)
+        expect(@lista1.tamaño).to eq(5)
       end 
 
       it "Extraer por delante" do
         expect(@lista1.extraerDelante).to eq("Lista Vacía")
-        @lista1.insertaAtras(55)
-        @lista1.insertaAtras(17)
-        @lista1.insertaAdelante(13)
-        @lista1.insertaAdelante(22)
-        expect(@lista1.extraerDelante).to eq(22)
-        expect(@lista1.cabeza.next.value).to eq(55)
-        expect(@lista1.tamaño).to eq(3)
+        @lista1.insertaAdelante(@cañaManzana1)
+        @lista1.insertaAdelante(@cañaManzana2)
+        @lista1.insertaAdelante(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana4)
+        @lista1.insertaAtras(@cañaManzana5)
+        expect(@lista1.extraerDelante).to eq(@cañaManzana3)
+        expect(@lista1.cabeza.next.value).to eq(@cañaManzana1)
+        expect(@lista1.tamaño).to eq(5)
       end
 
       it "Extraer por detrás" do
         expect(@lista1.extraerDetras).to eq("Lista Vacía")
-        @lista1.insertaAtras(55)
-        @lista1.insertaAtras(17)
-        @lista1.insertaAdelante(13)
-        @lista1.insertaAdelante(22)
-        expect(@lista1.extraerDetras).to eq(17)
-        expect(@lista1.cola.value).to eq(55)
-        expect(@lista1.tamaño).to eq(3)
+        @lista1.insertaAdelante(@cañaManzana1)
+        @lista1.insertaAdelante(@cañaManzana2)
+        @lista1.insertaAdelante(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana4)
+        @lista1.insertaAtras(@cañaManzana5)
+        expect(@lista1.extraerDetras).to eq(@cañaManzana5)
+        expect(@lista1.cola.value).to eq(@cañaManzana4)
+        expect(@lista1.tamaño).to eq(5)
       end
 
       it "Lista vacía" do
@@ -70,15 +80,13 @@ RSpec.describe Lista do
 
       it "Mostrar Lista" do
         expect(@lista1.to_s).to eq("Lista Vacía")
-        @lista1.insertaAtras(55)
-        @lista1.insertaAtras(17)
-        @lista1.insertaAdelante(13)
-        @lista1.insertaAdelante(22)
-        @lista1.insertaAtras(55)
-        @lista1.insertaAtras(17)
-        @lista1.insertaAdelante(13)
-        @lista1.insertaAdelante(22)
-        expect(@lista1.to_s).to eq([22, 13, 22, 13, 55, 17, 55, 17])
+        @lista1.insertaAdelante(@cañaManzana1)
+        @lista1.insertaAdelante(@cañaManzana2)
+        @lista1.insertaAdelante(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana3)
+        @lista1.insertaAtras(@cañaManzana4)
+        @lista1.insertaAtras(@cañaManzana5)
+        expect(@lista1.to_s).to eq([@cañaManzana3, @cañaManzana2, @cañaManzana1, @cañaManzana3, @cañaManzana4, @cañaManzana5])
       end
 
       it "Lista según los gramos de sal" do
@@ -91,8 +99,6 @@ RSpec.describe Lista do
         expect(@lista1.sal("<",0.6)).to eq([@cañaManzana5, @cañaManzana3])
         expect(@lista1.sal("=",1.7)).to eq([@cañaManzana4])
         expect(@lista1.sal(">",0.6)).to eq([@cañaManzana4, @cañaManzana2, @cañaManzana1])
-
-      end
-    
+      end    
     end
 end
