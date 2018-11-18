@@ -73,10 +73,9 @@ class ListaDobleEnlazada
         if (self.tamaño == 0)
             return "Lista Vacía"
         else
-            while(nodoAux != nil)
-                arr << nodoAux.value
-                #puts nodoAux.value
-                nodoAux = nodoAux.next
+            while(nodoAux != nil)                
+                arr.push nodoAux["value"]
+                nodoAux = nodoAux["next"]
             end
             return arr
         end

@@ -10,10 +10,10 @@ RSpec.describe Lista do
         @lista1 = ListaDobleEnlazada.new()
         @lista2 = ListaDobleEnlazada.new()
         @cañaManzana1 = Tabla.new(21.0,16.0,47.0,18.0,5.3,0.7)
-        @cañaManzana2 = Tabla.new(22.0,12.0,47.0,18.0,5.3,0.7)
-        @cañaManzana3 = Tabla.new(23.0,16.0,47.0,18.0,5.3,0.7)
-        @cañaManzana4 = Tabla.new(25.0,17.0,49.0,18.0,5.3,0.7)
-        @cañaManzana5 = Tabla.new(27.0,16.0,49.0,18.0,5.3,0.7)
+        @cañaManzana2 = Tabla.new(22.0,12.0,47.0,18.0,5.3,0.8)
+        @cañaManzana3 = Tabla.new(23.0,16.0,47.0,18.0,5.3,0.2)
+        @cañaManzana4 = Tabla.new(25.0,17.0,49.0,18.0,5.3,1.7)
+        @cañaManzana5 = Tabla.new(27.0,16.0,49.0,18.0,5.3,0.4)
 
         end 
   
@@ -62,6 +62,10 @@ RSpec.describe Lista do
         expect(@lista1.tamaño).to eq(3)
       end
 
+      it "Lista vacía" do
+        expect(@lista1.is_empty?).to eq(true)
+      end
+
       it "Mostrar Lista" do
         expect(@lista1.to_s).to eq("Lista Vacía")
         @lista1.insertaAtras(55)
@@ -72,13 +76,16 @@ RSpec.describe Lista do
         @lista1.insertaAtras(17)
         @lista1.insertaAdelante(13)
         @lista1.insertaAdelante(22)
-        expect(@lista.to_s).to eq(21)
+        expect(@lista1.to_s).to eq([22, 13, 22, 13, 55, 17, 55, 17])
       end
 
-      it "ver si es mayor o menor o igual" do
+      it "Lista según los gramos de sal" do
         @lista1.insertaAdelante(@cañaManzana1)
-        @lista2.insertaAdelante(@cañaManzana2)
-        expect(@lista1 > @lista2).to eq(true)
+        @lista1.insertaAdelante(@cañaManzana2)
+        @lista1.insertaAdelante(@cañaManzana3)
+        @lista1.insertaAdelante(@cañaManzana4)
+        @lista1.insertaAdelante(@cañaManzana5)
+        expect(@lista1.sal(mayor,6) < @lista2).to eq(true)
       end
     
     end
