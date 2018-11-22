@@ -14,7 +14,6 @@ RSpec.describe Lista do
         @cañaManzana3 = Tabla.new(23.0,16.0,47.0,18.0,5.3,0.2)
         @cañaManzana4 = Tabla.new(25.0,17.0,49.0,18.0,5.3,1.7)
         @cañaManzana5 = Tabla.new(27.0,16.0,49.0,18.0,5.3,0.4)
-
         end 
   
       it "Creación de un método ListaDobleEnlazada" do
