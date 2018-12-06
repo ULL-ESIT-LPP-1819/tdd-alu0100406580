@@ -20,10 +20,10 @@ describe Modulos do
       end
 
       it "Comparar la valoración nutricional entre dos individuos" do
-        expect(@paciente1 < @paciente2).to eq(true)
+        expect(@paciente1 < @paciente2).to eq(false)
         expect(@paciente1 > @paciente2).to eq(true)
         expect(@paciente1 >= @paciente2).to eq(true)
-        expect(@paciente1 == @paciente2).to eq(true)
+        expect(@paciente1 == @paciente1).to eq(true)
       end
 
 

@@ -107,6 +107,24 @@ class Paciente < Persona
     end
 
     def <=>(other)
+        return nil unless other.instance_of? Paciente
+        mayor = 0
+        menor = 0
+
+        mayor += 1 if self.peso > other.peso
+        mayor += 1 if self.talla > other.talla
+        mayor += 1 if self.imc > other.imc
+        mayor += 1 if self.porcent_grasa > other.porcent_grasa
+
+
+        menor += 1 if self.peso < other.peso
+        menor += 1 if self.talla < other.talla
+        menor += 1 if self.imc < other.imc
+        menor += 1 if self.porcent_grasa < other.porcent_grasa
+
+
+        return mayor <=> menor if ((mayor && menor) != 0)
+        return 0<=>0
     end
 
     def each
