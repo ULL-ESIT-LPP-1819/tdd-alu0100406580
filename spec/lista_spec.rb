@@ -5,7 +5,7 @@ RSpec.describe Lista do
   
     describe Lista do
       before :each do
-        include Enumerable, Comparable
+        #include Enumerable, Comparable
 
         @lista1 = ListaDobleEnlazada.new()
         @lista2 = ListaDobleEnlazada.new()
@@ -89,15 +89,53 @@ RSpec.describe Lista do
       end
 
       it "Lista según los gramos de sal" do
-        expect(@lista1.sal("<",6)).to eq("Lista Vacía")
+        def salComparacion(lista,comparacion,gramos)
+          if (lista.tamaño == 0)
+              return "Lista Vacía"
+          else
+              nodoAux = lista.cabeza
+              arr = []
+              if (comparacion == "<" )
+                  while(nodoAux != nil)
+                      if (nodoAux.value.sal < gramos)
+                          arr << nodoAux.value
+                      end
+                          nodoAux = nodoAux["next"]
+                  end
+                  return arr
+              end
+              if (comparacion == "=" )
+                  while(nodoAux != nil)
+                      if (nodoAux.value.sal == gramos)
+                          arr << nodoAux.value
+                      end
+                          nodoAux = nodoAux["next"]
+                  end
+                  return arr
+              end
+              if (comparacion == ">" )
+                  while(nodoAux != nil)
+                      if (nodoAux.value.sal > gramos)
+                          arr << nodoAux.value
+                      end
+                          nodoAux = nodoAux["next"]
+                  end
+                  return arr
+              end
+          end
+        end
+  
+
+
+        expect(salComparacion(@lista1,"<",0.6)).to eq("Lista Vacía")
         @lista1.insertaAdelante(@cañaManzana1)
         @lista1.insertaAdelante(@cañaManzana2)
         @lista1.insertaAdelante(@cañaManzana3)
         @lista1.insertaAdelante(@cañaManzana4)
         @lista1.insertaAdelante(@cañaManzana5)
-        expect(@lista1.sal("<",0.6)).to eq([@cañaManzana5, @cañaManzana3])
-        expect(@lista1.sal("=",1.7)).to eq([@cañaManzana4])
-        expect(@lista1.sal(">",0.6)).to eq([@cañaManzana4, @cañaManzana2, @cañaManzana1])
+        expect(salComparacion(@lista1,"<",0.6)).to eq([@cañaManzana5, @cañaManzana3])
+        expect(salComparacion(@lista1,"=",1.7)).to eq([@cañaManzana4])
+        expect(salComparacion(@lista1,">",0.6)).to eq([@cañaManzana4, @cañaManzana2, @cañaManzana1])
       end    
     end
 end

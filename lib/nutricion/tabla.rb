@@ -1,4 +1,8 @@
 class Tabla
+
+    include Enumerable
+    include Comparable
+
     attr_reader :grasas, :grasasSat, :hidratos, :azucares, :proteinas, :sal, :valEnerKJ, :valEnerKcal
     attr_accessor :grasasMonoinsaturadas, :grasasPoli, :poliAlcoholes, :almidon, :fibra, :vitaminas, :minerales
 
@@ -66,6 +70,7 @@ class Tabla
 
         return "Ingesta de referencia: Valor energético: #{valKJing}%KJ/#{valKCing}%Kcal, Grasa total: #{grasasing.round(2)}%, Ácidos grasos saturados: #{grasasSating}, Hidratos de carbono: #{hidratosing.round(2)}%, Azúcares: #{azucaresing}%, Proteínas: #{proteinasing}, Sal: #{saling.round(2)}"
     end
+
 
 
 end

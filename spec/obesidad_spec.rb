@@ -43,9 +43,6 @@ RSpec.describe Obesidad do
         end
 
         it "Clasificar por IMC" do
-            
-
-
             def indiceMasaCorporal(lista, comparacion, masa)
                 if (lista.tamaño == 0)
                     return "Lista Vacía"
