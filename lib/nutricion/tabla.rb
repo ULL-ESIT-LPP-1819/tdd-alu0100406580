@@ -71,6 +71,32 @@ class Tabla
         return "Ingesta de referencia: Valor energético: #{valKJing}%KJ/#{valKCing}%Kcal, Grasa total: #{grasasing.round(2)}%, Ácidos grasos saturados: #{grasasSating}, Hidratos de carbono: #{hidratosing.round(2)}%, Azúcares: #{azucaresing}%, Proteínas: #{proteinasing}, Sal: #{saling.round(2)}"
     end
 
+    def <=>(other)
+        return nil unless other.instance_of? Tabla
+        mayor = 0
+        menor = 0
 
+        mayor += 1 if self.grasas > other.grasas
+        mayor += 1 if self.grasasSat > other.grasasSat
+        mayor += 1 if self.hidratos > other.hidratos
+        mayor += 1 if self.azucares > other.azucares
+        mayor += 1 if self.proteinas > other.proteinas
+        mayor += 1 if self.sal > other.sal
+        mayor += 1 if self.valEnerKJ > other.valEnerKJ
+        mayor += 1 if self.valEnerKcal > other.valEnerKcal
+
+        menor += 1 if self.grasas < other.grasas
+        menor += 1 if self.grasasSat < other.grasasSat
+        menor += 1 if self.hidratos < other.hidratos
+        menor += 1 if self.azucares < other.azucares
+        menor += 1 if self.proteinas < other.proteinas
+        menor += 1 if self.sal < other.sal
+        menor += 1 if self.valEnerKJ < other.valEnerKJ
+        menor += 1 if self.valEnerKcal < other.valEnerKcal
+
+
+        return mayor <=> menor if ((mayor && menor) != 0)
+        return 0<=>0
+    end
 
 end

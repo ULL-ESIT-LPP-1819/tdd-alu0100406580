@@ -8,9 +8,8 @@ describe Modulos do
       @lista2 = ListaDobleEnlazada.new()
       @cañaManzana1 = Tabla.new(21.0,16.0,47.0,18.0,5.3,0.7)
       @cañaManzana2 = Tabla.new(22.0,12.0,47.0,18.0,5.3,0.8)
-      @cañaManzana3 = Tabla.new(23.0,16.0,47.0,18.0,5.3,0.2)
-      @cañaManzana4 = Tabla.new(25.0,17.0,49.0,18.0,5.3,1.7)
-      @cañaManzana5 = Tabla.new(27.0,16.0,49.0,18.0,5.3,0.4)
+      @paciente1 = Paciente.new("Jose", "Pérez", 29, 1,  75, 1.75)
+      @paciente2 = Paciente.new("María", "Gutierrez", 35, 0, 62, 1.64)      
       end
 
       it "Comparar dos etiquetas de información nutricional" do
@@ -18,6 +17,13 @@ describe Modulos do
         expect(@cañaManzana1 > @cañaManzana2).to eq(false)
         expect(@cañaManzana1 >= @cañaManzana2).to eq(false)
         expect(@cañaManzana2 == @cañaManzana2).to eq(true)
+      end
+
+      it "Comparar la valoración nutricional entre dos individuos" do
+        expect(@paciente1 < @paciente2).to eq(true)
+        expect(@paciente1 > @paciente2).to eq(true)
+        expect(@paciente1 >= @paciente2).to eq(true)
+        expect(@paciente1 == @paciente2).to eq(true)
       end
 
 
