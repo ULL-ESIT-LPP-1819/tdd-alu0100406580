@@ -96,7 +96,7 @@ class Tabla
 
 
         return mayor <=> menor if ((mayor && menor) != 0)
-        return 0<=>0
+        return 0 <=> 0
     end
 
 end

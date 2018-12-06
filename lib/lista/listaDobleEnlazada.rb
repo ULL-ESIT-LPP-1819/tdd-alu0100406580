@@ -72,6 +72,7 @@ class ListaDobleEnlazada
     end
 
     def to_s
+        nodoAux = Node.new(nil,nil,nil)
         nodoAux = @cabeza
         arr = []
         if (self.tamaño == 0)
@@ -93,10 +94,11 @@ class ListaDobleEnlazada
     end
 
     def each
-        # nodoAux = @cabeza
-        # while(nodoAux != nil)
-        #     yield nodoAux["value"]
-        #     nodoAux = nodoAux["next"]
-        # end
+         nodoAux = Node.new(nil,nil,nil)
+         nodoAux = @cabeza
+         while(nodoAux != nil)
+             yield nodoAux["value"]
+             nodoAux = nodoAux["next"]
+         end
     end
 end
