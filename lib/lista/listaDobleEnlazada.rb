@@ -1,8 +1,25 @@
-# create a Struct with :value, :next and :prev
+#
+# @author Darío Afonso Rodríguez
+# @abstract Struct Node
+
 Node = Struct.new(:value, :next, :prev)
 
+  #
+  # == Clase ListaDobleEnlazada
+  # Clase para definir una lista doblemente enlazada.
+  # Contiene Enumerable y Comparable(Este no se usa)
+  # * initialize
+  # * insertinsertaAdelante
+  # * insertinsertaAtrás
+  # * extraerDelante
+  # * extraerDetrás
+  # * is_empty?
+  # * to_s
+  # * each
+#
 
 class ListaDobleEnlazada
+
 
     include Enumerable
     include Comparable
@@ -89,8 +106,6 @@ class ListaDobleEnlazada
     
 
     def <=>(other)
-        # return nil unless other.instance_of? ListaDobleEnlazada
-        # @cabeza.value.sal <=> other.cabeza.value.sal
     end
 
     def each

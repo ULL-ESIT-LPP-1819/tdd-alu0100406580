@@ -1,4 +1,25 @@
+#
+  # == Clase Tabla
+  # Clase para definir una Tabla Nutricional
+  # Contiene Enumerable(Este no se usa) y Comparable
+  # * initialize
+  # * grasasMonoinsaturadas
+  # * grasasPoli
+  # * poliAlcoholes
+  # * almidon
+  # * vitaminas
+  # * minerales
+  # * to_s
+  # * porciones
+  # * ingesta
+  # * <=>
+#
+
 class Tabla
+
+#
+# @author Darío Afonso Rodríguez
+# @abstract Clase Tabla Nutricional
 
     include Enumerable
     include Comparable

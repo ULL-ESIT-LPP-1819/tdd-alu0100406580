@@ -1,3 +1,15 @@
+#
+# @author Darío Afonso Rodríguez
+# @abstract Clase Persona
+
+#
+  # == Clase Persona
+  # Clase para definir una Persona siendo la clase padre de Paciente
+  # Contiene Enumerable(Este no se usa) y Comparable(Este no se usa)
+  # * initialize
+#
+
+
 class Persona
 
     include Enumerable
@@ -13,6 +25,22 @@ class Persona
     end
 end
 
+#
+  # == Clase Paciente
+  # Clase para definir un Paciente que hereda de Persona
+  # Contiene Enumerable(Este no se usa) y Comparable
+  # * initialize
+  # * pliegues
+  # * to_s
+  # * imc
+  # * rcc
+  # * porcent_grasa
+  # * bicipital
+  # * tricipital
+  # * subescapular
+  # * suprailiaco
+  # * <=>
+#
 
 class Paciente < Persona
 

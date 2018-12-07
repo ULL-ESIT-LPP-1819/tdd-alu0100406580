@@ -2,7 +2,6 @@ RSpec.describe Modulos do
 
 describe Modulos do
     before :each do
-      #include Enumerable, Comparable
 
       @lista1 = ListaDobleEnlazada.new()
       @lista2 = ListaDobleEnlazada.new()
@@ -34,7 +33,7 @@ describe Modulos do
         @lista1.insertaAdelante(@cañaManzana2)
         @lista1.insertaAdelante(@cañaManzana3)
         expect(@lista1.collect{1}).to eq([1,1,1])
-        #expect(@lista1.select{@cañaManzana2}).to eq(@cañaManzana2)
+        expect(@lista1.select{|v| v.grasas < 22}).to eq([@cañaManzana2])
         expect(@lista1.max).to eq(@cañaManzana3)
         expect(@lista1.min).to eq(@cañaManzana2)
         expect(@lista1.sort).to eq([@cañaManzana2,@cañaManzana1,@cañaManzana3])
@@ -46,7 +45,7 @@ describe Modulos do
         @lista1.insertaAdelante(@paciente2)
         @lista1.insertaAdelante(@paciente3)
         expect(@lista1.collect{1}).to eq([1,1,1])
-        #expect(@lista1.select{@paciente2}).to eq(@paciente2)
+        expect(@lista1.select{|p| p.talla <= 1.75}).to eq([@paciente2, @paciente1])
         expect(@lista1.max).to eq(@paciente3)
         expect(@lista1.min).to eq(@paciente2)
         expect(@lista1.sort).to eq([@paciente2,@paciente3,@paciente1])
