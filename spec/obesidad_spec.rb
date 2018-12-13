@@ -1,5 +1,5 @@
 RSpec.describe Obesidad do
-    it "has a version number" do
+    it "Tiene un numero de versión" do
       expect(Obesidad::VERSION).not_to be nil
     end
   

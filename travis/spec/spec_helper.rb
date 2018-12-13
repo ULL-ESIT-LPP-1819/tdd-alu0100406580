@@ -1,9 +1,5 @@
 require "bundler/setup"
-require "nutricion"
-require "lista"
-require "obesidad"
-require "modulos"
-require "menu"
+require "travis"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

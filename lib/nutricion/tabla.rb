@@ -64,7 +64,7 @@ class Tabla
     end
 
     def to_s
-        "El valor energético: #{@valEnerKJ}KJ/#{@valEnerKcal}Kcal\n Cantidad de grasas: #{@grasas}\n Cantidad de grasas saturadas: #{@grasasSat}\n Hidratos de carbono: #{@hidratos}\n Azúcares: #{@azucares}\n Proteínas: #{@proteinas}\n Sal: #{@sal}"
+        return "El valor energético: #{@valEnerKJ}KJ/#{@valEnerKcal}Kcal Cantidad de grasas: #{@grasas} Cantidad de grasas saturadas: #{@grasasSat} Hidratos de carbono: #{@hidratos} Azúcares: #{@azucares} Proteínas: #{@proteinas} Sal: #{@sal}"
     end
    
     def porciones(porcion)

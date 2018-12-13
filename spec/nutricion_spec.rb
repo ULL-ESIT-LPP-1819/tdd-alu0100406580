@@ -1,5 +1,5 @@
 RSpec.describe Nutricion do
-  it "has a version number" do
+  it "Tiene un numero de versión" do
     expect(Nutricion::VERSION).not_to be nil
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Nutricion do
     end
 
     it "Método to_s" do
-      expect(@cañaManzana.to_s).to eq("El valor energético: #{1703.1}KJ/#{407.2}Kcal\n Cantidad de grasas: #{22.0}\n Cantidad de grasas saturadas: #{12.0}\n Hidratos de carbono: #{47.0}\n Azúcares: #{18.0}\n Proteínas: #{5.3}\n Sal: #{0.7}")
+      expect(@cañaManzana.to_s).to eq("El valor energético: #{1703.1}KJ/#{407.2}Kcal Cantidad de grasas: #{22.0} Cantidad de grasas saturadas: #{12.0} Hidratos de carbono: #{47.0} Azúcares: #{18.0} Proteínas: #{5.3} Sal: #{0.7}")
     end
 
     it "Porciones" do

@@ -47,12 +47,12 @@ class Paciente < Persona
     include Enumerable
     include Comparable
     
-    attr_reader :nombre,:fecha,:edad,:talla
+    attr_reader :nombre,:fecha,:edad,:talla,:factorActividad
     attr_accessor :genero,:peso,:pc_bicipital,:pc_tricipital,:pc_subescapular,:pc_suprailiaco 
 
-    def initialize(nombre,apellidos,edad, genero, peso, talla)
+    def initialize(nombre,apellidos,edad, genero, peso, talla, factorActividad = 0)
         super(@nombre = nombre, @apellidos = apellidos, @edad = edad, @genero = genero)
-        @peso, @talla = peso, talla
+        @peso, @talla, @factorActividad = peso, talla, factorActividad
     end
 
     def pliegues(pc_bicipital,pc_tricipital,pc_subescapular,pc_suprailiaco)
@@ -64,7 +64,7 @@ class Paciente < Persona
     end
 
     def imc
-            return (@peso/(@talla*@talla)).round(2)
+        return (@peso/(@talla*@talla)).round(2)
     end
     
     def rcc(cintura,cadera)

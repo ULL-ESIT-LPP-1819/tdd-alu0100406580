@@ -1,5 +1,5 @@
 RSpec.describe Lista do
-    it "has a version number" do
+    it "Tiene un numero de versión" do
       expect(Lista::VERSION).not_to be nil
     end
   
