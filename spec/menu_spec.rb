@@ -1,8 +1,11 @@
 RSpec.describe Menu do
 
     before :each do
+        include Enumerable
+        include Comparable
+
         sandwichPavo = Tabla.new(15.5,6.4,33.3,0.0,20.7,0.01)
-        te = Tabla.new(2,0.0,0.71,0.0,0.0,0.0)
+        te = Tabla.new(2.0,0.0,0.71,0.0,0.0,0.0)
         manzana = Tabla.new(0.23,0.039,19.06,14.34,0.36,0.0)
         bolPolloArroz = Tabla.new(1.6,0.3,22.5,4.1,5.7,0.3) #https://www.yazio.com/es/alimentos/bol-de-arroz-con-pollo.html
         yogurNaturalDanone = Tabla.new(3.6,2.3,5.0,5.0,4.0,0.16) #https://cuantoazucar.com/alimentos/ficha/g0213db
@@ -22,11 +25,30 @@ RSpec.describe Menu do
         flanChocolate = Tabla.new(3.3,2.1,20.8,19.8,2.5,0.0) #https://www.fatsecret.es/calor%C3%ADas-nutrici%C3%B3n/hacendado/flan-de-chocolate/100g
         @menu2 = []
         @menu2 << chocapic << lecheSemi << solomillo << salsaChampi << purePapa << cañaManzana << potaje << carnePapas << flanChocolate
+        @menu1KCal1 = @menu1.map.with_index{|x,i| x.valEnerKcal}
+        @menu1KCalTotal = @menu1KCal1.inject(0){|sum,x| sum + x }.round(2)
+        @menu1KCal2 = @menu2.map.with_index{|x,i| x.valEnerKcal}
+        @menu2KCalTotal = @menu1KCal2.inject(0){|sum,x| sum + x }.round(2)
+
+
         @paciente1 = Paciente.new("Jose", "Pérez", 29, 1,  75, 175, 0.0)
         @paciente2 = Paciente.new("María", "Gutierrez", 35, 0, 62, 164, 0.12)
         @paciente3 = Paciente.new("Jacinto", "Camacho", 25, 1, 91, 183, 0.27)
         @paciente4 = Paciente.new("Carlos", "Rodriguez", 57, 1, 84, 180, 0.27)
         @paciente5 = Paciente.new("Susana", "Armas", 47, 0, 51, 159, 0.54)
+
+        @pacientes = []
+        @pacientes << @paciente1 << @paciente2 << @paciente3 << @paciente4 << @paciente5
+
+        @pesoTeorico = @pacientes.map.with_index{|x,i| (x.talla - 150) * 0.75 + 50}
+        @gastoEnerBasal = @pacientes.map.with_index do |x,i|  
+            if x.genero == 1
+                (x.peso * 10) + (6.25 * x.talla) - (5 * x.edad) + 5
+            else
+                (x.peso * 10) + (6.25 * x.talla) - (5 * x.edad) - 161
+            end
+        end
+        
     end
 
     it "Prueba de si menus.to_s dan una cadena y si el factor de actividad está bien" do
@@ -35,8 +57,13 @@ RSpec.describe Menu do
         expect(@paciente2.factorActividad).to eq(0.12)
     end
     
-    it "Gasto Energético Total de los pacientes" do
+    it "Gasto Energético Total de los pacientes y Energía de los menus" do
+        expect(@menu1KCalTotal).to eq(828.36)
+        expect(@menu2KCalTotal).to eq(2203.02)
+        expect(@pesoTeorico).to eq([68.75, 60.5, 74.75, 72.5, 56.75])
+        expect(@gastoEnerBasal).to eq([1703.75, 1309.0, 1933.75, 1685.0, 1107.75])
         expect(@gastoEnerTotal).to eq([2500,5220,1420,4200,3200])
+
     end
        
     
