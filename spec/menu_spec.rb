@@ -48,7 +48,8 @@ RSpec.describe Menu do
                 (x.peso * 10) + (6.25 * x.talla) - (5 * x.edad) - 161
             end
         end
-        
+
+        @efectoTermogeno = @gastoEnerBasal.map{|e| (e * 0.10).round(2)}
     end
 
     it "Prueba de si menus.to_s dan una cadena y si el factor de actividad está bien" do
@@ -57,15 +58,17 @@ RSpec.describe Menu do
         expect(@paciente2.factorActividad).to eq(0.12)
     end
     
-    it "Gasto Energético Total de los pacientes y Energía de los menus" do
+    it "Peso Teorico, Gasto Energético Basal pacientes y Energía de los menus" do
         expect(@menu1KCalTotal).to eq(828.36)
         expect(@menu2KCalTotal).to eq(2203.02)
         expect(@pesoTeorico).to eq([68.75, 60.5, 74.75, 72.5, 56.75])
         expect(@gastoEnerBasal).to eq([1703.75, 1309.0, 1933.75, 1685.0, 1107.75])
-        expect(@gastoEnerTotal).to eq([2500,5220,1420,4200,3200])
+        expect(@efectoTermogeno).to eq([170.38, 130.9, 193.38, 168.5, 110.78])
+    end
 
+    it "Gasto Energía Total" do
+        expect(@gastoEnerTotal).to eq([2500,5220,1420,4200,3200])
     end
        
-    
 end
     
