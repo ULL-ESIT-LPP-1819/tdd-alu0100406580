@@ -59,17 +59,8 @@ RSpec.describe Menu do
         @menu1Requisitos = @gastoEnerTotal.select{|x| x.between?(@menu1KCalTotal*0.9,@menu1KCalTotal*1.10)}
         @menu2Requisitos = @gastoEnerTotal.select{|x| x.between?(@menu2KCalTotal*0.9,@menu2KCalTotal*1.10)}
         
-        seleccionMenu1 = lambda do |number|
-            @menu1Requisitos.each do |x|
-                if number == x
-                    return x
-                end
-            end
-            return -1
-        end
-        
-        seleccionMenu2 = lambda do |number|
-            @menu2Requisitos.each do |x|
+        seleccionMenu = lambda do |number,lista|
+            lista.each do |x|
                 if number == x
                     return x
                 end
@@ -77,8 +68,8 @@ RSpec.describe Menu do
             return -1
         end
 
-        @resultadomenu1 = @gastoEnerTotal.map.with_index{|x,i| "paciente #{i} menú de acuerdo a su dieta" if seleccionMenu1.call(x) != -1}.select{|x| x!=nil}
-        @resultadomenu2 = @gastoEnerTotal.map.with_index{|x,i| "paciente #{i} menú de acuerdo a su dieta" if seleccionMenu2.call(x) != -1}.select{|x| x!=nil}
+        @resultadomenu1 = @gastoEnerTotal.map.with_index{|x,i| "Paciente #{i}: #{@pacientes[i].nombre} #{@pacientes[i].apellidos} menú perfecto" if seleccionMenu.call(x,@menu1Requisitos) != -1}.select{|x| x!=nil}
+        @resultadomenu2 = @gastoEnerTotal.map.with_index{|x,i| "Paciente #{i}: #{@pacientes[i].nombre} #{@pacientes[i].apellidos} menú perfecto" if seleccionMenu.call(x,@menu2Requisitos) != -1}.select{|x| x!=nil}
     end
 
 
@@ -101,9 +92,8 @@ RSpec.describe Menu do
     it "Muestra de resultados de los menus" do
         expect(@menu1Requisitos).to eq([1596.98, 1816.72])
         expect(@menu2Requisitos).to eq([2308.45])
-        expect(@resultadomenu1).to eq(["paciente 1 menú de acuerdo a su dieta", "paciente 4 menú de acuerdo a su dieta"])
-        expect(@resultadomenu2).to eq(["paciente 3 menú de acuerdo a su dieta"])
-
+        expect(@resultadomenu1).to eq(["Paciente 1: María Gutierrez menú perfecto", "Paciente 4: Susana Armas menú perfecto"])
+        expect(@resultadomenu2).to eq(["Paciente 3: Carlos Rodriguez menú perfecto"])
     end       
 end
     
