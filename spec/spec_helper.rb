@@ -4,6 +4,7 @@ require "lista"
 require "obesidad"
 require "modulos"
 require "menu"
+require "funcional"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

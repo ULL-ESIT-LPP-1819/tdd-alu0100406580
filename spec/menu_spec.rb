@@ -95,5 +95,4 @@ RSpec.describe Menu do
         expect(@resultadomenu1).to eq(["Paciente 1: María Gutierrez menú perfecto", "Paciente 4: Susana Armas menú perfecto"])
         expect(@resultadomenu2).to eq(["Paciente 3: Carlos Rodriguez menú perfecto"])
     end       
-end
-    
+end    
