@@ -36,7 +36,7 @@ RSpec.describe Obesidad do
             
             expect(@paciente1.is_a?(Persona)).to eq(true)
             expect(@paciente2.instance_of?(Paciente)).to eq(true)
-            expect(@paciente3.class.ancestors).to eq([Paciente, Persona, Comparable, Enumerable, Object, Kernel, BasicObject])
+            expect(@paciente3.class.ancestors).to eq([Paciente, Persona, Comparable, Enumerable, Object, Tins::Full, Tins::Blank::Object, JSON::Ext::Generator::GeneratorMethods::Object, Kernel, BasicObject])
             expect(@paciente4).to be_a_kind_of(Persona)
             expect(@paciente5).to respond_to(:nombre, :edad, :fecha, :genero, :apellidos, :talla, :peso)
             expect(@paciente5).to respond_to('to_s', 'imc', 'porcent_grasa', 'rcc', 'pliegues')
