@@ -120,7 +120,7 @@ RSpec.describe Funcional do
                 nodoAux = self.cabeza
                 arr = []
                 if (self.tamaño == 0)
-                    return "Lista Vacía"
+                    "Lista Vacía"
                 else
                     while(nodoAux != nil)                
                         arr.push nodoAux["value"]
@@ -142,7 +142,7 @@ RSpec.describe Funcional do
                 nodoAux = self.cabeza
                 arr = []
                 if (self.tamaño == 0)
-                    return "Lista Vacía"
+                    "Lista Vacía"
                 else
                     while(nodoAux != nil)                
                         arr.push nodoAux["value"]
