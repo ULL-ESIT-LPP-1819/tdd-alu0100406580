@@ -134,6 +134,15 @@ class Paciente < Persona
         return "El pliegue Suprailiaco medio es -> #{pc_suprailiaco}mm"
     end
 
+    def gastoEnergiaTotal()
+        #pesoTeorico = (@talla - 150) * 0.75 + 50
+        gastoEnerBasal = @genero == 1 ? (@peso * 10) + (6.25 * @talla) - (5 * @edad) + 5 : (@peso * 10) + (6.25 * @talla) - (5 * @edad) - 161
+        efectoTermogeno = (gastoEnerBasal * 0.10).round(2)
+        gastoActividadFisica = gastoEnerBasal * factorActividad
+        (gastoEnerBasal + efectoTermogeno + gastoActividadFisica).round(2)
+    end
+
+
     def <=>(other)
         return nil unless other.instance_of? Paciente
         mayor = 0

@@ -25,6 +25,7 @@ class ListaDobleEnlazada
     include Comparable
     
     attr_accessor :cabeza, :cola, :tamaño
+    attr_reader :cabeza, :cola, :tamaño
 
     def initialize()
         @cabeza = nil
