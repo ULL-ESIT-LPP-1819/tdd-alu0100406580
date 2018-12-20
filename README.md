@@ -33,3 +33,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/nutricion.
+
+## Coveralls
+[![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-LPP-1819/tdd-alu0100406580/badge.svg?branch=master)](https://coveralls.io/github/ULL-ESIT-LPP-1819/tdd-alu0100406580?branch=master)
