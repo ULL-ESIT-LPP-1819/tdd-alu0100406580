@@ -192,6 +192,17 @@ RSpec.describe Funcional do
         expect(pacientesOrdenados).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
     end
 
-    it "Expectativas para Benchmark" do
+    it "Reportes para los diferentes Benchmark" do
+        require 'benchmark'
+        include Benchmark
+        
+        Benchmark.bm(30) do |x|
+            x.report('sort-Menus ---------->')         { @menusEnergía.sort_by { |hsh| hsh[:valorEnergetico] } }
+            x.report('for-Menus ----------->')         { @pacientes.bubbleSortFor! }
+            x.report('each-Menus ---------->')         { @pacientes.bubbleSortEach! }
+            x.report('for-Pacientes ------->')     { @pacientes.sort{|a,b| a.gastoEnergiaTotal <=> b.gastoEnergiaTotal} }
+            x.report('each-Pacientes ------>')     { @pacientes.sort{|a,b| a.gastoEnergiaTotal <=> b.gastoEnergiaTotal} }
+            x.report('sort-Pacientes ------>')     { @pacientes.sort{|a,b| a.gastoEnergiaTotal <=> b.gastoEnergiaTotal} }
+        end
     end
 end
