@@ -104,7 +104,16 @@ RSpec.describe Funcional do
                 end
                 self
             end
+            def bubbleSortEach!
+                each_index do |index|
+                  (length - 1).downto( index ) do |i|
+                    self[i-1], self[i] = self[i], self[i-1] if self[i-1][:valorEnergetico] > self[i][:valorEnergetico]
+                  end
+                end
+                self
+            end
         end
+
         class ListaDobleEnlazada
             def bubbleSortFor!
                 nodoAux = Node.new(nil,nil,nil)
@@ -123,12 +132,32 @@ RSpec.describe Funcional do
                             arr[i], arr[i - 1] = arr[i - 1], arr[i]
                             end
                         end
-                        end
-                        arr
                     end
+                    arr
+                end
+            end
+
+            def bubbleSortEach!
+                nodoAux = Node.new(nil,nil,nil)
+                nodoAux = self.cabeza
+                arr = []
+                if (self.tamaño == 0)
+                    return "Lista Vacía"
+                else
+                    while(nodoAux != nil)                
+                        arr.push nodoAux["value"]
+                        nodoAux = nodoAux["next"]
+                    end
+                    arr.each_index do |index|
+                        (arr.length - 1).downto( index ) do |i|
+                            arr[i-1], arr[i] = arr[i], arr[i-1] if arr[i-1].gastoEnergiaTotal > arr[i].gastoEnergiaTotal
+                            end
+                        end
+                        return arr
                 end
             end
         end
+    end
 
 
 
@@ -154,5 +183,10 @@ RSpec.describe Funcional do
         arrEach = @pacientes.bubbleSortEach!
         expect(menusOrdenados.bubbleSortEach!).to eq([{:menu=>1, :valorEnergetico=>1667.66}, {:menu=>8, :valorEnergetico=>1736.61}, {:menu=>7, :valorEnergetico=>2165.63}, {:menu=>3, :valorEnergetico=>2180.95}, {:menu=>2, :valorEnergetico=>2203.02}, {:menu=>6, :valorEnergetico=>2366.92}, {:menu=>9, :valorEnergetico=>2372.23}, {:menu=>4, :valorEnergetico=>2520.81}, {:menu=>10, :valorEnergetico=>2529.21}, {:menu=>5, :valorEnergetico=>2640.91}])
         expect(arrEach).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
+    end
+
+    it "Ordenar pacientes y menús con sort" do
+        expect(menusOrdenados).to eq([{:menu=>1, :valorEnergetico=>1667.66}, {:menu=>8, :valorEnergetico=>1736.61}, {:menu=>7, :valorEnergetico=>2165.63}, {:menu=>3, :valorEnergetico=>2180.95}, {:menu=>2, :valorEnergetico=>2203.02}, {:menu=>6, :valorEnergetico=>2366.92}, {:menu=>9, :valorEnergetico=>2372.23}, {:menu=>4, :valorEnergetico=>2520.81}, {:menu=>10, :valorEnergetico=>2529.21}, {:menu=>5, :valorEnergetico=>2640.91}])
+        expect(pacientesOrdenados).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
     end
 end
