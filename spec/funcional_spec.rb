@@ -57,41 +57,77 @@ RSpec.describe Funcional do
         @menus = [@menu1, @menu2, @menu3, @menu4, @menu5, @menu6, @menu7, @menu8, @menu9, @menu10]
         @menusEnergía = [valEnermenus.call(@menu1,1), valEnermenus.call(@menu2,2), valEnermenus.call(@menu3,3), valEnermenus.call(@menu4,4), valEnermenus.call(@menu5,5), valEnermenus.call(@menu6,6), valEnermenus.call(@menu7,7), valEnermenus.call(@menu8,8), valEnermenus.call(@menu9,9), valEnermenus.call(@menu10,10)]
 
-        paciente1 = Paciente.new("Jose", "Pérez", 29, 1,  75, 175, 0.0)
-        paciente2 = Paciente.new("María", "Gutierrez", 35, 0, 62, 164, 0.12)
-        paciente3 = Paciente.new("Jacinto", "Camacho", 25, 1, 91, 183, 0.27)
-        paciente4 = Paciente.new("Carlos", "Rodriguez", 57, 1, 84, 180, 0.27)
-        paciente5 = Paciente.new("Susana", "Armas", 47, 0, 51, 159, 0.54)
-        paciente6 = Paciente.new("Luis", "Martín", 36, 1,  81, 180, 0.12)
-        paciente7 = Paciente.new("Juana", "López", 24, 0, 62, 164, 0.12)
-        paciente8 = Paciente.new("Jhon", "Nash", 25, 1, 91, 183, 0.27)
-        paciente9 = Paciente.new("Bill", "Murray", 49, 1, 88, 194, 0.0)
-        paciente10 = Paciente.new("Alba", "González", 22, 0, 49, 160, 0.54)
+        @paciente1 = Paciente.new("Jose", "Pérez", 29, 1,  75, 175, 0.0)
+        @paciente2 = Paciente.new("María", "Gutierrez", 35, 0, 62, 164, 0.12)
+        @paciente3 = Paciente.new("Jacinto", "Camacho", 25, 1, 91, 183, 0.27)
+        @paciente4 = Paciente.new("Carlos", "Rodriguez", 57, 1, 84, 180, 0.27)
+        @paciente5 = Paciente.new("Susana", "Armas", 47, 0, 51, 159, 0.54)
+        @paciente6 = Paciente.new("Luis", "Martín", 36, 1,  81, 180, 0.12)
+        @paciente7 = Paciente.new("Juana", "López", 24, 0, 62, 164, 0.12)
+        @paciente8 = Paciente.new("Jhon", "Nash", 25, 1, 91, 183, 0.27)
+        @paciente9 = Paciente.new("Bill", "Murray", 49, 1, 88, 194, 0.0)
+        @paciente10 = Paciente.new("Alba", "González", 22, 0, 49, 160, 0.54)
 
         @pacientes = ListaDobleEnlazada.new()
-        @pacientes.insertaAdelante(paciente1)
-        @pacientes.insertaAdelante(paciente2)
-        @pacientes.insertaAdelante(paciente3)
-        @pacientes.insertaAdelante(paciente4)
-        @pacientes.insertaAdelante(paciente5)
-        @pacientes.insertaAdelante(paciente6)
-        @pacientes.insertaAdelante(paciente7)
-        @pacientes.insertaAdelante(paciente8)
-        @pacientes.insertaAdelante(paciente9)
-        @pacientes.insertaAdelante(paciente10)
+        @pacientes.insertaAdelante(@paciente1)
+        @pacientes.insertaAdelante(@paciente2)
+        @pacientes.insertaAdelante(@paciente3)
+        @pacientes.insertaAdelante(@paciente4)
+        @pacientes.insertaAdelante(@paciente5)
+        @pacientes.insertaAdelante(@paciente6)
+        @pacientes.insertaAdelante(@paciente7)
+        @pacientes.insertaAdelante(@paciente8)
+        @pacientes.insertaAdelante(@paciente9)
+        @pacientes.insertaAdelante(@paciente10)
 
         @pacientesEnergia = ListaDobleEnlazada.new()
-        @pacientesEnergia.insertaAdelante(paciente1.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente2.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente3.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente4.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente5.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente6.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente7.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente8.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente9.gastoEnergiaTotal)
-        @pacientesEnergia.insertaAdelante(paciente10.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente1.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente2.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente3.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente4.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente5.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente6.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente7.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente8.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente9.gastoEnergiaTotal)
+        @pacientesEnergia.insertaAdelante(@paciente10.gastoEnergiaTotal)
 
+
+        class Array
+            def bubbleSortFor!
+                length.times do |j|
+                for i in 1...(length - j)
+                    if self[i][:valorEnergetico] < self[i - 1][:valorEnergetico]
+                    self[i], self[i - 1] = self[i - 1], self[i]
+                    end
+                end
+                end
+                self
+            end
+        end
+        class ListaDobleEnlazada
+            def bubbleSortFor!
+                nodoAux = Node.new(nil,nil,nil)
+                nodoAux = self.cabeza
+                arr = []
+                if (self.tamaño == 0)
+                    return "Lista Vacía"
+                else
+                    while(nodoAux != nil)                
+                        arr.push nodoAux["value"]
+                        nodoAux = nodoAux["next"]
+                    end
+                    arr.length.times do |j|
+                        for i in 1...(arr.length - j)
+                            if arr[i].gastoEnergiaTotal < arr[i - 1].gastoEnergiaTotal
+                            arr[i], arr[i - 1] = arr[i - 1], arr[i]
+                            end
+                        end
+                        end
+                        arr
+                    end
+                end
+            end
         end
 
 
@@ -106,9 +142,17 @@ RSpec.describe Funcional do
 
     it "Obtener otro array para menús, y otra lista de pacientes con sus valores ordenados un bucle for" do
         menusOrdenados = @menusEnergía
-        arr = []
-        arr = @pacientes.bubbleSortEach!
-        expect(@menusOrdenados.bubbleSortFor!).to eq([{menu:1, valorEnergetico:2500}, {menu:10, valorEnergetico:3900}])
-        expect(arr).to eq([@paciente1])
+        arrFor = []
+        arrFor = @pacientes.bubbleSortFor!
+        expect(menusOrdenados.bubbleSortFor!).to eq([{:menu=>1, :valorEnergetico=>1667.66}, {:menu=>8, :valorEnergetico=>1736.61}, {:menu=>7, :valorEnergetico=>2165.63}, {:menu=>3, :valorEnergetico=>2180.95}, {:menu=>2, :valorEnergetico=>2203.02}, {:menu=>6, :valorEnergetico=>2366.92}, {:menu=>9, :valorEnergetico=>2372.23}, {:menu=>4, :valorEnergetico=>2520.81}, {:menu=>10, :valorEnergetico=>2529.21}, {:menu=>5, :valorEnergetico=>2640.91}])
+        expect(arrFor).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
+    end
+
+    it "Obtener otro array para menús, y otra lista de pacientes con sus valores ordenados con each" do
+        menusOrdenados = @menusEnergía
+        arrEach = []
+        arrEach = @pacientes.bubbleSortEach!
+        expect(menusOrdenados.bubbleSortEach!).to eq([{:menu=>1, :valorEnergetico=>1667.66}, {:menu=>8, :valorEnergetico=>1736.61}, {:menu=>7, :valorEnergetico=>2165.63}, {:menu=>3, :valorEnergetico=>2180.95}, {:menu=>2, :valorEnergetico=>2203.02}, {:menu=>6, :valorEnergetico=>2366.92}, {:menu=>9, :valorEnergetico=>2372.23}, {:menu=>4, :valorEnergetico=>2520.81}, {:menu=>10, :valorEnergetico=>2529.21}, {:menu=>5, :valorEnergetico=>2640.91}])
+        expect(arrEach).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
     end
 end
