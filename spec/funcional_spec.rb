@@ -154,10 +154,10 @@ RSpec.describe Funcional do
                             end
                         end
                         return arr
+                    end
                 end
             end
         end
-    end
 
 
 
@@ -186,7 +186,12 @@ RSpec.describe Funcional do
     end
 
     it "Ordenar pacientes y menús con sort" do
+        menusOrdenados = @menusEnergía.sort_by { |hsh| hsh[:valorEnergetico] }
+        pacientesOrdenados = @pacientes.sort{|a,b| a.gastoEnergiaTotal <=> b.gastoEnergiaTotal}        
         expect(menusOrdenados).to eq([{:menu=>1, :valorEnergetico=>1667.66}, {:menu=>8, :valorEnergetico=>1736.61}, {:menu=>7, :valorEnergetico=>2165.63}, {:menu=>3, :valorEnergetico=>2180.95}, {:menu=>2, :valorEnergetico=>2203.02}, {:menu=>6, :valorEnergetico=>2366.92}, {:menu=>9, :valorEnergetico=>2372.23}, {:menu=>4, :valorEnergetico=>2520.81}, {:menu=>10, :valorEnergetico=>2529.21}, {:menu=>5, :valorEnergetico=>2640.91}])
         expect(pacientesOrdenados).to eq([@paciente2, @paciente7, @paciente5, @paciente1, @paciente10, @paciente9, @paciente6, @paciente4, @paciente8, @paciente3])
+    end
+
+    it "Expectativas para Benchmark" do
     end
 end
