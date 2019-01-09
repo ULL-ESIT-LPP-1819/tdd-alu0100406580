@@ -6,6 +6,7 @@ require "obesidad"
 require "modulos"
 require "menu"
 require "funcional"
+require "menuDSL"
 require 'coveralls'
 Coveralls.wear!
 
