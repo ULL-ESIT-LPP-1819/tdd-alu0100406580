@@ -3,8 +3,8 @@ RSpec.describe MenuDSL do
     before :each do
         #grasas, grasasSat, hidratos, azucares, proteinas, sal
         @menuFacil = MenuFacil.new("Lunes")do
-            #titulo      "Bajo en calorías"
-            #ingesta     :min => 30, :max => 35
+            titulo      "Bajo en calorías"
+            ingesta     :min => 30, :max => 35
             desayuno    :descripcion => "Pan de trigo integral",
                         :porcion => "1 rodaja",
                         :gramos => 100,
@@ -33,7 +33,8 @@ RSpec.describe MenuDSL do
                         :azucares => 1.4,
                         :sal => 0.04
             almuerzo    :descripcion => "Lentejas",
-                        :porcion => "1/2 cuchar ́on",
+                        :porcion => "1/2 cucharón",
+                        :gramos => 150,
                         :grasas => 0.4,
                         :grasasSaturadas => 0.0,
                         :carbohidratos => 20.0,
@@ -67,7 +68,8 @@ RSpec.describe MenuDSL do
       end
     
     it "Salida del menuDSL" do
+        puts @menuFacil
         expect(@menuFacil.to_s).to be_a_kind_of(String)
-        expect(puts @menuFacil).not_to eq(nil)
+        expect(@menuFacil.to_s).not_to eq(nil)
     end        
 end
