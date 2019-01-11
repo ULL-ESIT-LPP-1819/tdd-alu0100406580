@@ -1,4 +1,3 @@
-require "lista/version"
 require "lista/listaDobleEnlazada"
 
 module Lista

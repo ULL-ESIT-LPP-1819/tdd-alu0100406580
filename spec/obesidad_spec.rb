@@ -1,9 +1,5 @@
 RSpec.describe Obesidad do
-    it "Tiene un numero de versión" do
-      expect(Obesidad::VERSION).not_to be nil
-    end
   
-    describe Obesidad do
       before :each do
         include Enumerable, Comparable
 
@@ -86,5 +82,4 @@ RSpec.describe Obesidad do
             @listaP1.insertaAtras(@paciente5)
             expect(indiceMasaCorporal(@listaP1,">",25)).to eq([@paciente4, @paciente5])            
         end
-    end
 end

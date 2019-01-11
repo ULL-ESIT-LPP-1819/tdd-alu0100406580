@@ -1,4 +1,3 @@
-require "obesidad/version"
 require "obesidad/paciente"
 
 module Obesidad

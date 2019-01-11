@@ -1,9 +1,5 @@
 RSpec.describe Lista do
-    it "Tiene un numero de versión" do
-      expect(Lista::VERSION).not_to be nil
-    end
   
-    describe Lista do
       before :each do
         #include Enumerable, Comparable
 
@@ -137,5 +133,4 @@ RSpec.describe Lista do
         expect(salComparacion(@lista1,"=",1.7)).to eq([@cañaManzana4])
         expect(salComparacion(@lista1,">",0.6)).to eq([@cañaManzana4, @cañaManzana2, @cañaManzana1])
       end    
-    end
 end
