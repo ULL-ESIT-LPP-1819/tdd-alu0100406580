@@ -1,12 +1,6 @@
 
 require "bundler/setup"
 require "nutricion"
-require "lista"
-require "obesidad"
-require "modulos"
-require "menu"
-require "funcional"
-require "menuDSL"
 require 'coveralls'
 Coveralls.wear!
 
